@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>LAST STOP — the NYC subway snake game</title>
+    <meta
+      name="description"
+      content="Drive a pixel-art subway train, pick up passengers, don't crash. One shared commute per day — compare your run."
+    />
+    <meta name="theme-color" content="#0b0e13" />
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect width="16" height="16" fill="%230b0e13"/><rect x="1" y="3" width="14" height="2" fill="%23d7dbde"/><rect x="1" y="5" width="14" height="3" fill="%23b9bdc0"/><rect x="3" y="5" width="2" height="2" fill="%2316262f"/><rect x="7" y="5" width="2" height="2" fill="%2316262f"/><rect x="11" y="5" width="2" height="2" fill="%2316262f"/><rect x="1" y="8" width="14" height="2" fill="%230039a6"/><rect x="1" y="10" width="14" height="1" fill="%23fccc0a"/><rect x="1" y="11" width="14" height="2" fill="%230a0a0a"/></svg>'
+    />
+
+    <!-- Social preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LAST STOP 🚇" />
+    <meta
+      property="og:description"
+      content="Snake, but you're driving the subway. One shared commute per day. How many stops can you make?"
+    />
+    <meta property="og:url" content="https://laststop.game/" />
+    <meta property="og:image" content="https://laststop.game/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LAST STOP 🚇" />
+    <meta
+      name="twitter:description"
+      content="Snake, but you're driving the subway. One shared commute per day."
+    />
+    <meta name="twitter:image" content="https://laststop.game/og.png" />
+  </head>
+  <body>
+    <div id="app">
+      <header id="signboard">
+        <span class="bullet" aria-hidden="true">LS</span>
+        <span id="hud-line">DAILY COMMUTE</span>
+        <span id="hud-exp" class="exp-badge hidden" aria-label="Express">◆ EXP</span>
+        <span id="hud-score" aria-label="Passengers picked up">0</span>
+      </header>
+
+      <main id="board-frame">
+        <canvas id="board" aria-label="LAST STOP game board"></canvas>
+
+        <div id="start-overlay">
+          <h1>LAST STOP</h1>
+          <p id="start-sub">Daily Commute</p>
+          <p class="hint">swipe to depart</p>
+        </div>
+
+        <div id="death-card" class="hidden" role="dialog" aria-label="Run over">
+          <div class="alert">
+            <div class="alert-head">
+              <span>Service Suspended</span>
+              <button
+                id="row-info"
+                class="info-btn"
+                type="button"
+                aria-label="What do the squares mean?"
+                aria-expanded="false"
+              >?</button>
+            </div>
+            <div class="alert-body">
+              <p id="death-note" class="alert-note"></p>
+              <div class="stats-row" aria-label="Run statistics">
+                <div class="stat">
+                  <span id="death-score" class="stat-num">0</span>
+                  <span id="death-stops-word" class="stat-label">stops</span>
+                </div>
+                <div class="stat">
+                  <span id="stat-best" class="stat-num">0</span>
+                  <span class="stat-label">best</span>
+                </div>
+                <div class="stat" id="stat-streak-col">
+                  <span id="stat-streak" class="stat-num">0</span>
+                  <span class="stat-label">streak</span>
+                </div>
+              </div>
+              <p id="death-row" class="emoji-row"></p>
+              <p id="row-legend" class="row-legend hidden">
+                🟦 local &nbsp;·&nbsp; 🟨 express &nbsp;·&nbsp; ⬛ end of the line
+              </p>
+              <div id="metrocard" class="metrocard hidden">
+                <span class="mc-brand">StreakCard</span>
+                <span class="mc-count"><b>1</b> day riding</span>
+                <span id="mc-punches" class="mc-punches"></span>
+              </div>
+              <p id="streak-lost" class="streak-lost hidden"></p>
+              <div class="alert-actions">
+                <div id="countdown-block" class="countdown-block hidden">
+                  <span class="stat-label">Next commute</span>
+                  <span id="countdown" class="countdown-time"></span>
+                </div>
+                <button id="share-btn" type="button">Share</button>
+              </div>
+              <p class="reboard">↑ swipe up to re-board</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer id="foot">
+        <span id="hud-best">BEST 0</span>
+        <a id="mode-link" href="?mode=free">Free Ride →</a>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
