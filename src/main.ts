@@ -1,4 +1,5 @@
 import "./style.css";
+import { inject } from "@vercel/analytics";
 import {
   enqueueDir,
   newGame,
@@ -15,6 +16,8 @@ import { todayStr, puzzleNumber, timeToNextCommute, isDateFaked } from "./daily.
 import { buildShareText, emojiRow, shareResult } from "./share.ts";
 import { getBest, recordBest, recordDailyPlay } from "./storage.ts";
 import { submitScore } from "./leaderboard.ts";
+
+inject();
 
 const $ = <T extends HTMLElement>(id: string): T => document.getElementById(id) as T;
 
